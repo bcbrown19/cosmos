@@ -1,15 +1,33 @@
 <template>
-  <div>
-    <h1>Register</h1>
-
-    <input type="email" name="email" v-model="email" placeholder="email"/>
-    <br>
-    <input type="password" name="password" v-model="password" placeholder="password"/>
-    <br>
-    <div class="error" v-html="error" />
-    <br>
-    <button @click="register">Register</button>
-  </div>
+  <v-app id="register">
+    <v-main>
+      <v-container class="fill-height" fluid>
+        <v-row align="center" justify="center">
+          <v-col cols="12" sm="8" md="4">
+            <v-card class="elevation-12">
+                <v-toolbar color="primary" dark flat>
+                  <v-toolbar-title>Registration Form</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field label="First Name" name="first_name" prepend-icon="letter-f-circle-outline" type="text" v-model="first_name"></v-text-field>
+                  <v-text-field label="Last Name" name="last_name" prepend-icon="letter-l-circle-outline" type="text" v-model="last_name"></v-text-field>
+                  <v-text-field label="Email" name="email" prepend-icon="mdi-account" type="text" v-model="email"></v-text-field>
+                  <v-text-field label="Password" name="password" prepend-icon="mdi-lock" type="password" v-model="password"></v-text-field>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <div class="danger-alert" v-html="error" />
+                <v-spacer></v-spacer>
+                <v-btn color="primary" @click="register">Register</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
@@ -18,6 +36,8 @@ import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
+      first_name: '',
+      last_name: '',
       email: '',
       password: '',
       error: null
@@ -26,7 +46,7 @@ export default {
   methods: {
     async register () {
       try {
-         await AuthenticationService.register({
+        await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
