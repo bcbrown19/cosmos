@@ -11,8 +11,8 @@
                 </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field label="First Name" name="first_name" prepend-icon="letter-f-circle-outline" type="text" v-model="first_name"></v-text-field>
-                  <v-text-field label="Last Name" name="last_name" prepend-icon="letter-l-circle-outline" type="text" v-model="last_name"></v-text-field>
+                  <v-text-field label="First Name" name="first_name" prepend-icon="mdi-alpha-f-circle-outline" type="text" v-model="first_name"></v-text-field>
+                  <v-text-field label="Last Name" name="last_name" prepend-icon="mdi-alpha-l-circle-outline" type="text" v-model="last_name"></v-text-field>
                   <v-text-field label="Email" name="email" prepend-icon="mdi-account" type="text" v-model="email"></v-text-field>
                   <v-text-field label="Password" name="password" prepend-icon="mdi-lock" type="password" v-model="password"></v-text-field>
                 </v-form>
