@@ -11,10 +11,10 @@
                 </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field label="First Name" name="first_name" prepend-icon="mdi-alpha-f-circle-outline" type="text" v-model="first_name"></v-text-field>
-                  <v-text-field label="Last Name" name="last_name" prepend-icon="mdi-alpha-l-circle-outline" type="text" v-model="last_name"></v-text-field>
-                  <v-text-field label="Email" name="email" prepend-icon="mdi-account" type="text" v-model="email"></v-text-field>
-                  <v-text-field label="Password" name="password" prepend-icon="mdi-lock" type="password" v-model="password"></v-text-field>
+                  <v-text-field outlined label="First Name" name="first_name" prepend-icon="mdi-account-card-details-outline" type="text" v-model="first_name"></v-text-field>
+                  <v-text-field outlined label="Last Name" name="last_name" prepend-icon="mdi-account-card-details-outline" type="text" v-model="last_name"></v-text-field>
+                  <v-text-field outlined label="Email" name="email" prepend-icon="mdi-email" type="text" v-model="email"></v-text-field>
+                  <v-text-field outlined label="Password" name="password" prepend-icon="mdi-lock" type="password" v-model="password"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -47,6 +47,8 @@ export default {
     async register () {
       try {
         await AuthenticationService.register({
+          first_name: this.first_name,
+          last_name: this.last_name,
           email: this.email,
           password: this.password
         })
