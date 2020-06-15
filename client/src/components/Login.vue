@@ -1,6 +1,7 @@
 <template>
   <v-app id="login">
     <v-main>
+      {{ $route.meta.title }}
       <v-container class="fill-height" ma-0 pa-0 fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
@@ -13,13 +14,14 @@
                 <v-form>
                   <v-text-field
                     outlined
-                    abel="Email"
+                    label="Email"
                     name="email"
                     prepend-icon="mdi-email"
                     type="text"
                     v-model="email">
                   </v-text-field>
                   <v-text-field
+                    autocomplete="current-password"
                     outlined label="Password"
                     name="password"
                     prepend-icon="mdi-lock"
@@ -55,10 +57,12 @@ export default {
   methods: {
     async login () {
       try {
-        await AuthenticationService.login({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }

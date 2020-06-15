@@ -4,11 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import { sync } from 'vuex-router-sync'
+import 'vuetify/dist/vuetify.min.css'
+import store from '@/store/store'
 
 import colors from 'vuetify/lib/util/colors'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
+
+sync(store, router)
 
 export default new Vuetify({
   theme: {
@@ -30,6 +35,7 @@ new Vue({
   el: '#app',
   vuetify: new Vuetify(),
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -18,7 +18,7 @@
             <v-list-item-title>Contact</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="register">
+        <v-list-item v-if="!$store.state.isUserLoggedIn" link to="register">
           <v-list-item-action>
             <v-icon>mdi-account-plus</v-icon>
           </v-list-item-action>
@@ -34,7 +34,18 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Project Cosmos</v-toolbar-title>
       <v-spacer />
-      <v-btn text to="login" exact><v-icon>mdi-login</v-icon></v-btn>
+      <v-btn
+        v-if="!$store.state.isUserLoggedIn"
+        text
+        to="login">
+        <v-icon>mdi-login</v-icon>
+      </v-btn>
+      <v-btn
+        v-if="$store.state.isUserLoggedIn"
+        text
+        to="logout">
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
     </v-app-bar>
   </div>
 </template>
