@@ -1,4 +1,4 @@
-# Project Artemis
+# Project Cosmos
 
 This project is to help me learn Vue.js, Express, and Node. I'm trying to work outside of my Python-based comfort zone by learning a JavaScript framework
 
