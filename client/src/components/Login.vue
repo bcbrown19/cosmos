@@ -1,7 +1,6 @@
 <template>
   <v-app id="login">
     <v-main>
-      {{ $route.meta.title }}
       <v-container class="fill-height" ma-0 pa-0 fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
@@ -54,6 +53,10 @@ export default {
       error: null
     }
   },
+  metaInfo: {
+    title: 'Login Page | Project Cosmos',
+    titleTemplate: null
+  },
   methods: {
     async login () {
       try {
@@ -63,6 +66,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'root'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
